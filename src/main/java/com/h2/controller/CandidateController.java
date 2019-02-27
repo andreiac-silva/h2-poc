@@ -17,11 +17,17 @@ import com.h2.service.CandidateService;
 @RequestMapping("/candidates")
 public class CandidateController {
 
-	@Autowired
-	private CandidateService candidateService;
+    @Autowired
+    private CandidateService candidateService;
 
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Candidate>> findByName(@RequestParam(value = "name", required = false) String name) {
-		return ResponseEntity.ok(candidateService.findByName(name));
-	}
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Candidate>> findByName(@RequestParam(value = "name", required = false) String name) {
+        return ResponseEntity.ok(candidateService.findByName(name));
+
+    }
+
+    @GetMapping(path = "/email", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Candidate>> findByName(@RequestParam(value = "name", required = false) String name, @RequestParam(value = "email", required = false) String email) {
+        return ResponseEntity.ok(candidateService.findByNameAndEmail(name, email));
+    }
 }
