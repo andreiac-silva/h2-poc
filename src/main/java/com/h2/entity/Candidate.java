@@ -29,7 +29,7 @@ public class Candidate implements Serializable {
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "date_birth", nullable = false)
+	@Column(name = "date_birth", nullable = true)
 	private LocalDate localDate;
 
 	public Candidate() {
